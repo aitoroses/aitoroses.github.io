@@ -1,0 +1,27 @@
+<script type="text/javascript" src="https://unpkg.com/transitionable@1.1.0/dist/transitionable.js"></script>
+<style>
+    .square {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        transform: translate3d( -10px, -20px, 0);
+        border-radius: 50%;
+        background-color: black;
+    }
+</style>
+
+<div id="squareId" class="square"></div>
+
+<script type="text/javascript">
+    var x = Transitionable(0)                                  // X Default { stiffness: 90, damping: 8 }
+    var y = Transitionable(0, { stiffness: 120, damping: 2 })  // Y Wombly  { stiffness: 120, damping: 2 }
+
+    document.addEventListener('mousemove', e => {
+        x.value = e.clientX
+        y.value = e.clientY
+    })
+
+    x.map(v => squareId.style.left = v)
+    y.map(v => squareId.style.top = v)
+
+</script>
